@@ -1073,6 +1073,12 @@ raw_printer_test_CXXFLAGS = $(PTHREAD_CFLAGS) $(AM_CXXFLAGS)
 raw_printer_test_LDFLAGS = $(PTHREAD_CFLAGS) $(TCMALLOC_FLAGS)
 raw_printer_test_LDADD = $(LIBTCMALLOC) $(PTHREAD_LIBS)
 
+TESTS += traverse_memory
+traverse_memory_SOURCES = src/tests/traverse_memory.cc
+traverse_memory_CXXFLAGS = $(PTHREAD_CFLAGS) $(AM_CXXFLAGS)
+traverse_memory_LDFLAGS = $(PTHREAD_CFLAGS) $(TCMALLOC_FLAGS)
+traverse_memory_LDADD = $(LIBTCMALLOC) $(PTHREAD_LIBS)
+
 # sampler_test and sampling_test both require sampling to be turned
 # on, which it's not by default.  Use the "standard" value of 2^19.
 TESTS_ENVIRONMENT += TCMALLOC_SAMPLE_PARAMETER=524288
@@ -1223,6 +1229,12 @@ sampler_debug_test_SOURCES = $(sampler_test_SOURCES)
 sampler_debug_test_CXXFLAGS = $(samples_test_CXXFLAGS)
 sampler_debug_test_LDFLAGS = $(sampler_test_LDFLAGS)
 sampler_debug_test_LDADD = libtcmalloc_debug.la $(PTHREAD_LIBS) -lm
+
+TESTS += traverse_memory_debug
+traverse_memory_debug_SOURCES = $(traverse_memory_SOURCES)
+traverse_memory_debug_CXXFLAGS = $(traverse_memory_CXXFLAGS)
+traverse_memory_debug_LDFLAGS = $(traverse_memory_LDFLAGS)
+traverse_memory_debug_LDADD = libtcmalloc_debug.la $(PTHREAD_LIBS) -lm
 
 TESTS += sampling_debug_test.sh$(EXEEXT)
 sampling_debug_test_sh_SOURCES = src/tests/sampling_test.sh

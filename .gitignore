@@ -101,6 +101,8 @@
 /realloc_debug_unittest
 /realloc_unittest
 /realloc_unittest.exe
+/traverse_memory_debug
+/traverse_memory
 /sampler_debug_test
 /sampler_test
 /sampling_debug_test
